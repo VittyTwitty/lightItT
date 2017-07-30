@@ -45,17 +45,15 @@ gulp.task('scripts-js', function () {
 });
 
 // Создание таска скриптов lib
-// gulp.task('scripts', function () {
-//     return gulp.src([
-//         'app/libs/jquery/dist/jquery.min.js',
-//         'app/libs/moment/min/moment.min.js',
-//         'app/libs/custom-select/custom-select.js',
-//         'app/libs/handlebars/handlebars.min.js'
-//     ])
-//         .pipe(concat('out-libs.min.js')) // Собираем новом файле libs.min.js
-//         .pipe(uglify()) // Сжимаем JS файл
-//         .pipe(gulp.dest('app/scripts'));
-// })
+gulp.task('scripts', function () {
+    return gulp.src([
+        'app/libs/owl/dist/owl.carousel.min.js',
+        'app/libs/magnific-popup/jquery.magnific-popup.min.js'
+    ])
+        .pipe(concat('out-libs.min.js')) // Собираем новом файле libs.min.js
+        .pipe(uglify()) // Сжимаем JS файл
+        .pipe(gulp.dest('app/production'));
+})
 
 // Создание таска стилей
 gulp.task('sass', function () { // Создаем таск "sass"
@@ -77,7 +75,7 @@ gulp.task('browser-sync', function () {
 });
 
 // Создание watcher
-gulp.task('watch', ['browser-sync', 'sass', 'scripts-js'], function () {
+gulp.task('watch', ['browser-sync', 'sass', 'scripts-js', 'scripts'], function () {
     gulp.watch('app/sass/**/*.+(scss|sass)', ['sass']);
     gulp.watch('app/**/*.html', browserSync.reload);
     gulp.watch('app/scripts/**/*.js', browserSync.reload);

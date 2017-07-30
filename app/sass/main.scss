@@ -1,15 +1,6 @@
 @import "reset";
 @import "vars";
-
-
-@font-face {
-	font-family: "Montserrat-Medium";
-	src: url("../assets/fonts/Montserrat-Medium.ttf") format("truetype")
-}
-@font-face {
-	font-family: "OpenSans-Regular";
-	src: url("../assets/fonts/OpenSans-Regular.ttf") format("truetype")
-}
+@import "fonts";
 
 a {
     &:hover {
@@ -32,7 +23,7 @@ header {
         display: flex;
         align-items: center;
         width: 100%;
-        height: 74px;
+        min-height: 74px;
         background-color: #fff;           
     }
     .logo-wrapper {
@@ -83,7 +74,7 @@ header {
         display: flex;
         align-items: center;
         width: 100%;
-        height: 55px;
+        min-height: 55px;
         background-color: #abccd9;
         .main-nav {
             ul {
@@ -95,6 +86,7 @@ header {
                 margin-right: 50px;
                 position: relative;
                 padding: 10px 0;
+                font-size: 11px;
                 &:hover {
                     ul {
                         display: flex;
@@ -266,7 +258,7 @@ header {
 }
 .s-description {
     width: 100%;
-    height: 240px;
+    min-height: 240px;
     background-color: #12b4c3;
     background-image: linear-gradient(to top, #008fd5 0%, #008fd5 8%, rgba(0, 143, 213, 0.45) 59%, rgba(255, 255, 255, 0) 100%);
     display: flex;
@@ -288,7 +280,7 @@ header {
         display: flex;
         width: 74px;
         height: 74px;
-        background-color: #12b4c3; 
+        background-color: rgba(222, 234, 239, .16);
         img {
             margin: auto;
             width: auto;
@@ -311,6 +303,7 @@ header {
         margin: 10px auto;
         font-size: 16px;
         width: 668px;
+        line-height: 25px;
     }
 }
 
@@ -429,7 +422,7 @@ header {
     display: flex;
     align-items: center;
     width: 100%;
-    height: 148px;
+    min-height: 148px;
     border: 1px solid rgba(101, 103, 104, 0.5);
     background-color: #fcfcfc;
     &_header {
@@ -464,7 +457,8 @@ header {
 }
 .s-details-bot {
     margin-top: 40px;
-    height: 470px;    
+    min-height: 470px;  
+    display: flex;
     h3 {
         font-size: 22px;
     }
@@ -651,8 +645,9 @@ header {
 
 .s-flexible {
     width: 100%;
-    height: 430px;
+    min-height: 430px;
     background-color: #008dcf;
+    display: flex;
     &_items {
         display: flex;
         flex-direction: column;
@@ -765,21 +760,79 @@ header {
     height: 440px;
     background-color: #495b69;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    &_background {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        opacity: .5;
+    }
     h3 {
         font-size: 30px;
         color: #ffffff;
-        margin-top: 42px;
+        margin-top: 50px;
         margin-bottom: 30px;
     }
     form {
         display: flex;
         flex-direction: column;
+        label {
+            display: flex;            
+            &:hover {
+                i {
+                    color: $dark-color;
+                }                
+            }
+            i {
+                width: 45px;
+                height: 45px;
+                line-height: 45px;
+                cursor: pointer;
+                color: $main-color;
+                background: rgba(255, 255, 255, .7);
+            }
+        }
         input {
             height: 45px;
             margin-bottom: 10px;
+            width: 100%;
+            border: none;
+            padding-left: 10px;
+            background: rgba(255, 255, 255, .7);
         }
+        input:focus + i{     
+            color: $dark-color;
+        }
+        
         textarea {
             height: 95px;
+            padding: 10px;
+            background: rgba(255, 255, 255, .7);
+        }
+        .form-buttons {
+            display: flex;
+            justify-content: center;
+            height: 45px;
+            width: 100%;
+            margin-top: 28px;
+        }
+        button {
+            width: 120px;
+            border: none;
+            text-transform: uppercase;
+            color: #fff;
+            font-size: 11px;
+            border: 1px solid #fff;
+            background: rgba(255, 255, 255, .15);
+            transition: $main-transition;
+            &:hover {
+                background: rgba(255, 255, 255, 1);
+                color: $dark-color;
+            }
+        }
+        button+button {
+            margin-left: 20px;
         }
 
     }
@@ -800,9 +853,148 @@ footer {
         width: 100%;
         height: 55px;
         background-color: #141d22;
+        color: #547e93;
+        font-size: 12px;
+        line-height: 55px;
+    }
+}
+
+div.owl-item {
+    &>li {
+        width: auto;
     }
 }
 
 
 
 @import "libs";
+@media only screen and (max-width : 1200px) {
+    .s-description{
+        &_item {
+            div{
+                font-size: 16px;
+                margin-bottom: 5px;
+            }
+            span {
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+
+
+
+@media only screen and (max-width : 992px) {
+    header {
+        .logo-wrapper {
+            justify-content: center;
+        }
+        .social-wrapper {
+            justify-content: center;
+        }
+        
+    }
+    .s-description{
+        &_item {
+            div{
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+            span {
+                font-size: 9px;
+            }
+        }
+    }
+    .s-under-description {
+        &_body {
+            width: 80%;
+        }
+    }
+    .s-details {
+        &_header {
+            text-align: center;
+        }
+        &_button {
+            margin: 0 auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    }
+    .s-details-bot {
+        h3 {
+            margin-top: 30px;
+        }
+        &_what-bottom {
+            margin-bottom: 40px;
+            margin-right: 20px;
+        }
+    }
+
+
+}
+
+
+
+@media only screen and (max-width : 768px) {
+    .s-description{
+        &_item {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            div{
+                font-size: 16px;
+                margin-bottom: 5px;
+            }
+            span {
+                font-size: 11px;
+            }
+        }
+    }
+    .s-details-bot {
+        h3 {
+            text-align: center;
+        }
+        &_what-top {
+            float: left;
+        }
+        &_what-bottom {
+            width: 80%;
+        }
+    }
+
+}
+
+
+
+
+@media only screen and (max-width : 480px) {
+    header {
+        .social-wrapper {
+            font-size: 12px;
+            flex-direction: column;
+            display: none;
+        }
+        
+    }
+    .s-description{
+        &_item {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            div{
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+            span {
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+
+
+
+@media only screen and (max-width : 320px) {
+
+}
